@@ -1,0 +1,12 @@
+{
+  "name": "Operação Mineroduto",
+  "short_name": "Mineroduto",
+  "description": "Sistema Inteligente de Relatórios Operacionais",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1c",
+  "theme_color": "#1a1a1c",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}

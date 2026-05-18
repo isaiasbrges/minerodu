@@ -1,0 +1,188 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+
+  --font-display: "Rajdhani", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Industrial brand — Navy #003E6B + Safety Yellow #F3C124 */
+  --background: oklch(0.18 0.035 248);
+  --foreground: oklch(0.97 0.005 90);
+
+  --surface: oklch(0.22 0.045 248);
+  --surface-elevated: oklch(0.27 0.055 248);
+
+  --card: oklch(0.23 0.048 248);
+  --card-foreground: oklch(0.97 0.005 90);
+
+  --popover: oklch(0.24 0.05 248);
+  --popover-foreground: oklch(0.97 0.005 90);
+
+  /* Safety yellow #F3C124 */
+  --primary: oklch(0.82 0.16 86);
+  --primary-foreground: oklch(0.20 0.06 248);
+
+  /* Corporate navy #003E6B */
+  --brand: oklch(0.34 0.10 248);
+  --brand-foreground: oklch(0.97 0.005 90);
+
+  --secondary: oklch(0.30 0.06 248);
+  --secondary-foreground: oklch(0.97 0.005 90);
+
+  --muted: oklch(0.27 0.05 248);
+  --muted-foreground: oklch(0.72 0.025 240);
+
+  --accent: oklch(0.82 0.16 86);
+  --accent-foreground: oklch(0.20 0.06 248);
+
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 90);
+
+  --success: oklch(0.70 0.17 145);
+  --success-foreground: oklch(0.20 0.06 248);
+
+  --warning: oklch(0.82 0.16 86);
+  --warning-foreground: oklch(0.20 0.06 248);
+
+  --border: oklch(0.34 0.07 248);
+  --input: oklch(0.27 0.055 248);
+  --ring: oklch(0.82 0.16 86);
+
+  --gradient-industrial: linear-gradient(135deg, oklch(0.22 0.045 248), oklch(0.14 0.03 248));
+  --gradient-brand: linear-gradient(135deg, oklch(0.34 0.10 248), oklch(0.22 0.06 248));
+  --gradient-yellow: linear-gradient(135deg, oklch(0.86 0.16 90), oklch(0.74 0.17 78));
+  --gradient-accent-glow: radial-gradient(circle at 50% 0%, oklch(0.82 0.16 86 / 0.18), transparent 60%);
+
+  --shadow-industrial: 0 8px 32px -8px oklch(0 0 0 / 0.55);
+  --shadow-glow: 0 0 24px oklch(0.82 0.16 86 / 0.30);
+  --shadow-brand: 0 10px 30px -10px oklch(0.34 0.10 248 / 0.6);
+  --shadow-inset: inset 0 1px 0 oklch(1 0 0 / 0.05);
+}
+
+.dark {
+  --background: oklch(0.18 0.035 248);
+  --foreground: oklch(0.97 0.005 90);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(circle at 0% 0%, oklch(0.82 0.16 86 / 0.06), transparent 50%),
+      radial-gradient(circle at 100% 100%, oklch(0.34 0.10 248 / 0.25), transparent 55%);
+    background-attachment: fixed;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  .font-mono { font-family: var(--font-mono); }
+}
+
+@layer components {
+  .industrial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-industrial), var(--shadow-inset);
+    transition: all 0.25s ease;
+  }
+  .industrial-card:hover {
+    border-color: oklch(0.82 0.16 86 / 0.5);
+    transform: translateY(-2px);
+  }
+
+  .stripe-warning {
+    background-image: repeating-linear-gradient(
+      45deg,
+      oklch(0.82 0.16 86),
+      oklch(0.82 0.16 86) 10px,
+      oklch(0.20 0.06 248) 10px,
+      oklch(0.20 0.06 248) 20px
+    );
+  }
+
+  .glow-yellow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+.pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.scan-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, oklch(0.82 0.16 86 / 0.12), transparent);
+  animation: scan 2s linear infinite;
+  pointer-events: none;
+}
